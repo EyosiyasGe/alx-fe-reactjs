@@ -1,9 +1,9 @@
-function Footer() {
+function footer() {
     return {
-        <Footer>
+        <footer>
         <p>© 2023 City Lovers</p>
-        </Footer>
+        </footer>
     }
 }
 
-export default Footer;
+export default footer;
