@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import WelcomeMessage from './components/WelcomeMessage.jsx'
 import Header from './components/Header.jsx'
-import footer from './components/Footer.jsx'
+import Footer from './components/Footer.jsx'
 import MainContent from './components/MainContent.jsx'
 import UserProfile from './components/UserProfile.jsx'
 
