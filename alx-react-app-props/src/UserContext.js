@@ -1,5 +1,4 @@
 import React from "react";
 import { createContext } from 'react'
 
-const DataContext = createContext();
-export default UserContext;
+export const DataContext = React.createContext();
