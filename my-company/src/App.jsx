@@ -28,13 +28,14 @@ function App() {
             </ul>
           </nav>
         </div>
-        <Switch>
+        <Routes>
+          
           <Route path='./Home.jsx' element={<Home />} />
           <Route path='./About.jsx' element={<About />} />
           <Route path='./Service.jsx' element={<Service />} />
           <Route path='./Contact.jsx' element={<Contact />} />
           <Route path="*" element={<div>404 Not Found</div>} />
-        </Switch>
+        </Routes>
       </Router>
       <Navbar />
     </>
