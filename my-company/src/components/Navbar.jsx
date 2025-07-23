@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div style={{ padding: '10px', backgroundColor: 'lime', justifyContent: 'center' }}>
+    <div style={{ padding: '10px', backgroundColor: 'lime', justifyContent: 'center' , display: 'flex' }}>
           <nav>
             <ul>
               <li>
