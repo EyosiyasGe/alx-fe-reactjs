@@ -29,10 +29,11 @@ function App() {
           </nav>
         </div>
         <Switch>
-          <Route path="./" exact component={Home} />
-          <Route path="./About" component={About} />
-          <Route path="./Service" component={Service} />
-          <Route path="./Contact" component={Contact} />
+          <Route path='./Home.jsx' element={<Home />} />
+          <Route path='./About.jsx' element={<About />} />
+          <Route path='./Service.jsx' element={<Service />} />
+          <Route path='./Contact.jsx' element={<Contact />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Switch>
       </Router>
       <Navbar />
