@@ -1,12 +1,12 @@
-
+import React from 'react';
 
 const UserProfile = (props) => {
-    return {
+    return (
     <div>
         <h2>{props.name}</h2>
         <p>Age: {props.age}</p>
         <p>Bio: {props.bio}</p>
     </div>
-    };
+    );
 };
-    export defualt UserProfile;
+export default UserProfile;

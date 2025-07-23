@@ -1,9 +1,9 @@
 import ProfilePage from './ProfilePage';
-import UserContext from './UserContext';
+import UserContext from './components/UserContext';
 function App() {
 
   return (
-    <UserContext />
+    <UserContext.Provider value={UserContext} />
   )
 }
 export default App;
