@@ -1,0 +1,26 @@
+import React from 'react'
+
+const Navbar = () => {
+  return (
+    <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li> 
+              <li>
+                <Link to="/src/About">About</Link>
+              </li>
+              <li>
+              <Link to="/src/Service"> Service </Link>
+              </li>
+              <li>
+                <Link to="/src/Contact">Contact</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+  )
+}
+
+export default Navbar
