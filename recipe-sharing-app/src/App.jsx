@@ -1,19 +1,19 @@
-import AddRecipeForm from './components/AddRecipeForm'
-import RecipeList from './RecipeList'
-import './App.css'
-import EditRecipeForm from './components/EditRecipeForm'
-import DeleteRecipeButton from './components/DeleteRecipeButton'
-import RecipeDetails from './components/RecipeDetails'
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import RecipeDetails from "./components/RecipeDetails";
+import EditRecipeForm from "./components/EditRecipeForm";
 
+function App() {
   return (
-    <>
-      <div>
-       <AddRecipeForm />
-       <RecipeList />
-      </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/recipe/:id/edit" element={<EditRecipeForm />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
