@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export const useRecipeStore = create((set) => ({
+export const useRecipeStore = create((set, get) => ({
   recipes: [
     {
       id: '1',
@@ -24,19 +24,20 @@ export const useRecipeStore = create((set) => ({
       description: 'Spicy and creamy chicken curry.',
     },
   ],
+
+  searchTerm: '',
+  setSearchTerm: (term) => set({ searchTerm: term }),
+
   filteredRecipes: [],
+  filterRecipes: () => {
+    const { recipes, searchTerm } = get();
+    const term = searchTerm.toLowerCase();
+    set({
+      filteredRecipes: recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(term)
+      ),
+    });
+  },
+
   setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
-
-  filterRecipes: (titleTerm, ingredientTerm = '', maxCookingTime = Infinity) =>
-    set((state) => ({
-      filteredRecipes: state.recipes.filter((r) => {
-        const matchesTitle = r.title.toLowerCase().includes(titleTerm.toLowerCase());
-        const matchesIngredient = ingredientTerm
-          ? r.ingredients.toLowerCase().includes(ingredientTerm.toLowerCase())
-          : true;
-        const matchesTime = r.cookingTime <= maxCookingTime;
-
-        return matchesTitle && matchesIngredient && matchesTime;
-      }),
-    })),
 }));
