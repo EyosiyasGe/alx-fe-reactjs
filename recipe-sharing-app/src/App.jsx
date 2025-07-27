@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AddRecipeForm from './components/AddRecipeForm';
 import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
-import AddRecipeForm from './components/AddRecipeForm';  // ← Import here
+import RecipeDetail from './components/RecipeDetail'; // Make sure this component exists
 import { useRecipeStore } from './store/recipeStore';
 
-function App() {
+function Home() {
   const recipes = useRecipeStore((s) => s.recipes);
   const setRecipes = useRecipeStore((s) => s.setRecipes);
 
@@ -15,11 +17,20 @@ function App() {
   return (
     <div style={{ maxWidth: 900, margin: '40px auto', padding: '0 20px' }}>
       <h1>Recipe Finder</h1>
-      <AddRecipeForm />  {/* ← Include the component here */}
+      <AddRecipeForm />
       <SearchBar />
       <RecipeList />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
+    </Router>
+  );
+}
