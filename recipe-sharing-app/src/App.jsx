@@ -20,6 +20,8 @@ function Home() {
       <AddRecipeForm />
       <SearchBar />
       <RecipeList />
+      <FavoritesList />
+      <RecommendationsList />
     </div>
   );
 }
