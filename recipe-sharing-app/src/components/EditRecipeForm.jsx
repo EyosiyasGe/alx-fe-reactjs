@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useRecipeStore } from '../store/recipeStore'; // Adjust path as needed
 
-const EditRecipeForm = ({ recipe, onSubmit, onCancel }) => {
+const EditRecipeForm = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { recipes, updateRecipe } = useRecipeStore();
+
+  const recipe = recipes.find((r) => r.id.toString() === id);
+
   const [formData, setFormData] = useState({
-    title: recipe.title || '',
-    ingredients: recipe.ingredients || '',
-    instructions: recipe.instructions || '',
+    title: recipe?.title || '',
+    ingredients: recipe?.ingredients || '',
+    instructions: recipe?.instructions || '',
   });
 
   const handleChange = (e) => {
@@ -15,9 +23,10 @@ const EditRecipeForm = ({ recipe, onSubmit, onCancel }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ ...recipe, ...formData });
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ required
+    updateRecipe(id, formData); // ✅ updates via Zustand
+    navigate(`/recipe/${id}`);
   };
 
   return (
@@ -27,8 +36,8 @@ const EditRecipeForm = ({ recipe, onSubmit, onCancel }) => {
       <label>
         Title:
         <input
-          type="text"
           name="title"
+          type="text"
           value={formData.title}
           onChange={handleChange}
           required
@@ -55,12 +64,7 @@ const EditRecipeForm = ({ recipe, onSubmit, onCancel }) => {
         />
       </label>
 
-      <div style={{ marginTop: '1rem' }}>
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={onCancel} style={{ marginLeft: '10px' }}>
-          Cancel
-        </button>
-      </div>
+      <button type="submit">Save</button>
     </form>
   );
 };
