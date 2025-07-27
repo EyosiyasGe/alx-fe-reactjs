@@ -13,4 +13,5 @@ const RecipeDetails = ({ recipeId }) => {
         {/* Render EditRecipeForm and DeleteRecipeButton here */}
       </div>
     );
-  };
+};
+  export default RecipeDetails;
