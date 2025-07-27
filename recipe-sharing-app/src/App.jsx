@@ -1,4 +1,4 @@
-import AddRecipeForm from './AddRecipeForm'
+import AddRecipeForm from './components/AddRecipeForm'
 import RecipeList from './RecipeList'
 import './App.css'
 
