@@ -1,18 +1,24 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import RecipeDetails from "./components/RecipeDetails";
-import EditRecipeForm from "./components/EditRecipeForm";
+import React, { useEffect } from 'react';
+import SearchBar from './components/SearchBar';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';  // ← Import here
+import { useRecipeStore } from './store/recipeStore';
 
 function App() {
+  const recipes = useRecipeStore((s) => s.recipes);
+  const setRecipes = useRecipeStore((s) => s.setRecipes);
+
+  useEffect(() => {
+    setRecipes(recipes);
+  }, [recipes, setRecipes]);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
-        <Route path="/recipe/:id/edit" element={<EditRecipeForm />} />
-      </Routes>
-    </Router>
+    <div style={{ maxWidth: 900, margin: '40px auto', padding: '0 20px' }}>
+      <h1>Recipe Finder</h1>
+      <AddRecipeForm />  {/* ← Include the component here */}
+      <SearchBar />
+      <RecipeList />
+    </div>
   );
 }
 
