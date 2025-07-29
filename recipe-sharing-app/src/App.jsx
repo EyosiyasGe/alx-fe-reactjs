@@ -17,9 +17,9 @@ function Home() {
   return (
     <div style={{ maxWidth: 900, margin: '40px auto', padding: '0 20px' }}>
       <h1>Recipe Finder</h1>
+      <RecipeList />
       <AddRecipeForm />
       <SearchBar />
-      <RecipeList />
       <FavoritesList />
       <RecommendationsList />
     </div>
