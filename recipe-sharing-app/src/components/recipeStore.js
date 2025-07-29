@@ -3,29 +3,31 @@ import { create } from 'zustand';
 const useRecipeStore = create((set) => ({
   recipes: [],
 
-  addRecipe: (recipe) => {
+  addRecipe(recipe) {
     set((state) => ({
-      recipes: [...state.recipes, recipe],
+      recipes: [...state.recipes, recipe]
     }));
   },
 
-  updateRecipe: (updatedRecipe) => {
+  updateRecipe(updatedRecipe) {
     set((state) => ({
       recipes: state.recipes.map((recipe) =>
         recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-      ),
+      )
     }));
   },
 
-  deleteRecipe: (id) => {
+  deleteRecipe(id) {
     set((state) => ({
-      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+      recipes: state.recipes.filter((recipe) => recipe.id !== id)
     }));
   },
 
-  setRecipes: (recipes) => {
-    set(() => ({ recipes }));
-  },
+  setRecipes(recipes) {
+    set(() => ({
+      recipes: recipes
+    }));
+  }
 }));
 
 export default useRecipeStore;
