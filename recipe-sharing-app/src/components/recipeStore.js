@@ -55,4 +55,8 @@ export const useRecipeStore = create((set, get) => ({
         return { recommendations: recommended };
     }
     ),
+    addRecipe: (recipe) => set(state => ({
+        recipes: [...state.recipes, recipe],
+        filteredRecipes: [...state.filteredRecipes, recipe]
+    })),
 }));
