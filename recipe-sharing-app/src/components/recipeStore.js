@@ -58,13 +58,14 @@ export const useRecipeStore = create((set, get) => ({
             return { recommendations: recommended };
         }),
 
-    // ✅ Required: Add a recipe
+    // ✅ Needed for tests
+    setRecipes: (recipes) => set({ recipes }),
+
     addRecipe: (newRecipe) =>
         set((state) => ({
             recipes: [...state.recipes, newRecipe],
         })),
 
-    // ✅ Required: Update a recipe by id
     updateRecipe: (updatedRecipe) =>
         set((state) => ({
             recipes: state.recipes.map((recipe) =>
@@ -72,7 +73,6 @@ export const useRecipeStore = create((set, get) => ({
             ),
         })),
 
-    // ✅ Required: Delete a recipe by id
     deleteRecipe: (id) =>
         set((state) => ({
             recipes: state.recipes.filter((recipe) => recipe.id !== id),
