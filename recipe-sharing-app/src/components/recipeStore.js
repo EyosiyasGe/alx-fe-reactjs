@@ -39,24 +39,42 @@ export const useRecipeStore = create((set, get) => ({
         });
     },
 
-    setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
-    recipes: [],
     favorites: [],
-    addFavorite: (recipeId) => set(state => ({ favorites: [...state.favorites, recipeId] })),
-    removeFavorite: (recipeId) => set(state => ({
-        favorites: state.favorites.filter(id => id !== recipeId)
-    })),
+    addFavorite: (recipeId) =>
+        set((state) => ({ favorites: [...state.favorites, recipeId] })),
+    removeFavorite: (recipeId) =>
+        set((state) => ({
+            favorites: state.favorites.filter((id) => id !== recipeId),
+        })),
+
     recommendations: [],
-    generateRecommendations: () => set(state => {
-        // Mock implementation based on favorites
-        const recommended = state.recipes.filter(recipe =>
-            state.favorites.includes(recipe.id) && Math.random() > 0.5
-        );
-        return { recommendations: recommended };
-    }
-    ),
-    addRecipe: (recipe) => set(state => ({
-        recipes: [...state.recipes, recipe],
-        filteredRecipes: [...state.filteredRecipes, recipe]
-    })),
+    generateRecommendations: () =>
+        set((state) => {
+            const recommended = state.recipes.filter(
+                (recipe) =>
+                    state.favorites.includes(recipe.id) &&
+                    Math.random() > 0.5
+            );
+            return { recommendations: recommended };
+        }),
+
+    // ✅ Required: Add a recipe
+    addRecipe: (newRecipe) =>
+        set((state) => ({
+            recipes: [...state.recipes, newRecipe],
+        })),
+
+    // ✅ Required: Update a recipe by id
+    updateRecipe: (updatedRecipe) =>
+        set((state) => ({
+            recipes: state.recipes.map((recipe) =>
+                recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+            ),
+        })),
+
+    // ✅ Required: Delete a recipe by id
+    deleteRecipe: (id) =>
+        set((state) => ({
+            recipes: state.recipes.filter((recipe) => recipe.id !== id),
+        })),
 }));
