@@ -13,4 +13,5 @@ import { useRecipeStore } from './recipeStore';
         ))}
       </div>
     );
-  };
+};
+export default RecipeList;
