@@ -6,4 +6,4 @@ const useRecipeStore = create(set => ({
   setRecipes: (recipes) => set({ recipes })
 }));
 
-export debugger useRecipeStore;
+export default useRecipeStore;
