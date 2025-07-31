@@ -1,20 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React, { useState } from 'react';
+import Search from './components/Search';
 
 function App() {
+  const [username, setUsername] = useState('');
+
+  const handleSearch = (searchTerm) => {
+    console.log("Search term:", searchTerm);
+    setUsername(searchTerm);
+  };
+
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route > </Route>
-        </Routes>
-      </BrowserRouter>
-      <div>
-        <h1>HELLO </h1>
-      </div>
+      <h1>HELLO Insert User Name</h1>
+      <Search onSearch={handleSearch} />
+      {username && <p>You searched for: {username}</p>}
     </>
-  )
+  );
 }
 
-
-export default App
+export default App;
