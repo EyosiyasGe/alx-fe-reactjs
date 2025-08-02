@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
-import RecipeDetail from './components/RecipeDetail'; // Make sure this component exists
+import RecipeDetail from './components/RecipeDetail'; 
 import { useRecipeStore } from './store/recipeStore';
 
 function Home() {
