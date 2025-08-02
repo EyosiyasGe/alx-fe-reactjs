@@ -1,7 +1,7 @@
 // services/githubService.js
 import axios from 'axios';
 
-export const fetchUserData = async (username) => {
+ const fetchUserData = async (username) => {
   try {
     const response = await axios.get(`https://api.github.com/users/${username}`);
     return { data: response.data, error: null };
@@ -9,3 +9,4 @@ export const fetchUserData = async (username) => {
     return { data: null, error: error.response?.status === 404 ? 'User not found' : 'Something went wrong' };
   }
 };
+export default fetchUserData;
