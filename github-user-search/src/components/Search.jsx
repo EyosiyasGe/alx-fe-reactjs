@@ -10,7 +10,9 @@ const Search = ({ onSearch }) => {
   const handleSubmit = (event) => {
     event.preventDefault(); // stop the page from reloading
     if (searchTerm.trim() !== '') {
-      onSearch(searchTerm); // send the username back to parent component
+      onSearch(searchTerm);
+      // send the username back to parent component
+      setSearchTerm ("")
     }
   };
 

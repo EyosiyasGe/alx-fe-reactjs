@@ -24,7 +24,9 @@ function App() {
   };
 
   return (
-    <div>
+
+  <div id='App'>
+      <div >
       <h1>GitHub User Search</h1>
       <Search onSearch={handleSearch} />
 
@@ -38,7 +40,8 @@ function App() {
           <a href={user.html_url} target="_blank" rel="noreferrer">View GitHub Profile</a>
         </div>
       )}
-    </div>
+        </div>
+        </div>
   );
 }
 
