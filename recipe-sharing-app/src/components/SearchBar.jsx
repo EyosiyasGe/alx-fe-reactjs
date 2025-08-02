@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRecipeStore } from '../store/recipeStore';
+import { useRecipeStore } from './recipeStore';
 
 export default function SearchBar() {
   const filterRecipes = useRecipeStore((s) => s.filterRecipes);

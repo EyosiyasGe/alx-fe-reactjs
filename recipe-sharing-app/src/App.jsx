@@ -4,7 +4,7 @@ import AddRecipeForm from './components/AddRecipeForm';
 import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
 import RecipeDetail from './components/RecipeDetail'; 
-import { useRecipeStore } from './store/recipeStore';
+import { useRecipeStore } from './components/recipeStore';
 
 function Home() {
   const recipes = useRecipeStore((s) => s.recipes);
