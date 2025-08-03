@@ -1,4 +1,3 @@
-// services/githubService.js
 import axios from 'axios'; // 1. Importing axios for making HTTP requests
 
 // 2. Declaring an async function to fetch GitHub user data
