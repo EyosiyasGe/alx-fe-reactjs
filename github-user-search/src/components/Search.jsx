@@ -4,28 +4,29 @@ const Search = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value); // live update the input value
+    setSearchTerm(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // stop the page from reloading
+    event.preventDefault();
     if (searchTerm.trim() !== '') {
       onSearch(searchTerm);
-      // send the username back to parent component
-      setSearchTerm ("")
+      setSearchTerm('');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginBottom: '1rem' }}>
       <input
         type="text"
-        name="username"
         placeholder="USER NAME"
         value={searchTerm}
         onChange={handleInputChange}
+        style={{ padding: '8px', width: '200px' }}
       />
-      <button type="submit">Search</button>
+      <button type="submit" style={{ padding: '8px 12px', marginLeft: '8px' }}>
+        Search
+      </button>
     </form>
   );
 };
