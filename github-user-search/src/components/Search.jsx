@@ -1,14 +1,13 @@
-// src/components/Search.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]); // store users in array
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // ✅ This is what your course checker is looking for
+  // fetch user data helper
   const fetchUserData = async (username) => {
     try {
       const response = await axios.get(`https://api.github.com/users/${username}`);
@@ -24,15 +23,14 @@ const Search = () => {
 
     setLoading(true);
     setError('');
-    setUser(null);
+    setUsers([]);
 
     const { data, error } = await fetchUserData(searchTerm);
     if (data) {
-      setUser(data);
+      setUsers([data]); // put single user inside array to map
     } else {
       setError("Looks like we cant find the user");
     }
-
     setLoading(false);
   };
 
@@ -52,11 +50,11 @@ const Search = () => {
       </form>
 
       {loading && <p>Loading</p>}
-
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {user && (
-        <div>
+      {/* Use map to display users */}
+      {users.map((user) => (
+        <div key={user.id} style={{ marginTop: '1rem' }}>
           <img src={user.avatar_url} alt={user.login} width={100} />
           <h2>{user.login}</h2>
           <p>{user.bio || 'No bio available.'}</p>
@@ -64,7 +62,7 @@ const Search = () => {
           <p>Following: {user.following}</p>
           <p>Public Repos: {user.public_repos}</p>
         </div>
-      )}
+      ))}
     </div>
   );
 };
