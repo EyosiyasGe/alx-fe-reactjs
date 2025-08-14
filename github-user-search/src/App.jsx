@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Search from './components/Search';
 import githubService from './services/githubService';
+import user from './components/user';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,7 +41,8 @@ function App() {
           <a href={user.html_url} target="_blank" rel="noreferrer">View GitHub Profile</a>
         </div>
       )}
-        </div>
+      </div>
+      <user />
         </div>
   );
 }
